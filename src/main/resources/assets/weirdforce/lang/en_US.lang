@@ -1,3 +1,10 @@
-item.powerReceiver.name=Power Receiver
+<Creative Tabs>
 itemGroup.weirdforce=Weird Force Fields
-tile.energyChannel.name=Energy Channel
+
+<Items>
+item.powerReceiver.name=Power Receiver
+item.forciumIngot.name=Forcium Ingot
+
+<Blocks>
+tile.energyChanel.name=Energy Channel
+tile.forciumOre.name=Forcium Ore

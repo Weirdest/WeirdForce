@@ -8,16 +8,22 @@ import net.minecraft.block.material.Material;
 
 public final class ModBlocks {
 	
-	public static Block energyChannel;
+	public static Block energyChanel;
+	public static Block forciumOre;
 	
 	public static final void init(){
-		energyChannel = new BasicBlock("energyChannel", Material.iron, "pickaxe", 3)
+		energyChanel = new BasicBlock("energyChanel", Material.iron, "pickaxe", 3)
 				//Called onto energyChannel
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
 				.setResistance(2000F)
 				.setHardness(35F);
 		
-		GameRegistry.registerBlock(energyChannel, "energyChannel");
+		GameRegistry.registerBlock(energyChanel, "energyChanel");
 		
+		forciumOre = new BasicBlock("forciumOre", Material.rock, "pickaxe", 2)
+				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
+				.setResistance(5F)
+				.setHardness(10F);
+		GameRegistry.registerBlock(forciumOre, "forciumOre");
 	}
 }
