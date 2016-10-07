@@ -26,6 +26,10 @@ public class ModRecipes {
 			'F', ModItems.forciumIngot,
 			'P', ModItems.powerReceiver);
 	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.forcium),
+			"###", "###", "###",
+			'#', ModItems.forciumIngot);
+	
 	//Smelting Recipes
 	GameRegistry.addSmelting(ModBlocks.forciumOre, new ItemStack(ModItems.forciumIngot), 0.7F);
 	}

@@ -10,6 +10,7 @@ public final class ModItems {
 	
 	public static Item powerReceiver;
 	public static Item forciumIngot;
+	public static Item focalLens;
 	
 	public static final void init() {
 		powerReceiver = new Item()
@@ -29,5 +30,10 @@ public final class ModItems {
 				.setTextureName(Main.MODID + ":forciumIngot");
 		GameRegistry.registerItem(forciumIngot, "forciumIngot");
 		
+		focalLens = new Item()
+				.setUnlocalizedName("focalLens")
+				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
+				.setTextureName(Main.MODID + ":focalLens");
+		GameRegistry.registerItem(focalLens, "focalLens");
 	}
 }

@@ -15,5 +15,11 @@ public class BasicBlock extends Block {
 		//Moved this here because of issue with perms
 		this.setHarvestLevel(HarvestTool, HarvestLevel);
 	}
+	
+	protected BasicBlock(String unlocalizedName, Material material) { //No harvest 
+		super(material);
+		this.setBlockName(unlocalizedName);
+		this.setBlockTextureName(Main.MODID + ":" + unlocalizedName);
+	}
 
 }
