@@ -8,13 +8,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 
-public class ModBlockOre extends Block {
+public class ModBlockItemDrop extends Block {
 	
 	private Item drop;
 	private int least_quantity;
 	private int most_quantity;
 
-    protected ModBlockOre(String unlocalizedName, Material mat, String HarvestTool, int HarvestLevel, Item drop, int least_quantity, int most_quantity) {
+    protected ModBlockItemDrop(String unlocalizedName, Material mat, String HarvestTool, int HarvestLevel, Item drop, int least_quantity, int most_quantity) {
         super(mat);
         this.setBlockName(unlocalizedName);
         this.setBlockTextureName(Main.MODID + ":" + unlocalizedName);
@@ -25,7 +25,7 @@ public class ModBlockOre extends Block {
         this.most_quantity = most_quantity;
     }
     
-    protected ModBlockOre(String unlocalizedName, Material mat, String HarvestTool, int HarvestLevel, Item drop) {
+    protected ModBlockItemDrop(String unlocalizedName, Material mat, String HarvestTool, int HarvestLevel, Item drop) {
         super(mat);
         this.setBlockName(unlocalizedName);
         this.setBlockTextureName(Main.MODID + ":" + unlocalizedName);
@@ -43,8 +43,9 @@ public class ModBlockOre extends Block {
     
     @Override
     public int quantityDropped(int meta, int fortune, Random random) {
-        if (this.least_quantity >= this.most_quantity)
+        if (this.least_quantity >= this.most_quantity) {
             return this.least_quantity;
+        }
         return this.least_quantity + random.nextInt(this.most_quantity - this.least_quantity + fortune + 1);
     }
 }

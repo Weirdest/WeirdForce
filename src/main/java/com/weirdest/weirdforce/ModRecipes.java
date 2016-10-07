@@ -19,6 +19,11 @@ public class ModRecipes {
 			'G', Items.gold_ingot, //Crafting Piece
 			'R', Items.redstone); //Crafting Piece
 	
+	GameRegistry.addRecipe(new ItemStack(ModItems.focalLens),
+			"SSS", "SFS", "SSS",
+			'S', Blocks.stone,
+			'F', ModItems.forciumShard);
+	
 	//Block Recipes
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.energyChanel),
 			"SFS", "FPF", "SFS",
@@ -29,6 +34,12 @@ public class ModRecipes {
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.forcium),
 			"###", "###", "###",
 			'#', ModItems.forciumIngot);
+	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.projector),
+			"SPS", "SLS", "SPS",
+			'S', Blocks.stone,
+			'P', ModItems.powerReceiver,
+			'L', ModItems.focalLens);
 	
 	//Smelting Recipes
 	GameRegistry.addSmelting(ModBlocks.forciumOre, new ItemStack(ModItems.forciumIngot), 0.7F);

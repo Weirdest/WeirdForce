@@ -11,6 +11,7 @@ public final class ModItems {
 	public static Item powerReceiver;
 	public static Item forciumIngot;
 	public static Item focalLens;
+	public static Item forciumShard;
 	
 	public static final void init() {
 		powerReceiver = new Item()
@@ -35,5 +36,11 @@ public final class ModItems {
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
 				.setTextureName(Main.MODID + ":focalLens");
 		GameRegistry.registerItem(focalLens, "focalLens");
+		
+		forciumShard = new Item()
+				.setUnlocalizedName("forciumShard")
+				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
+				.setTextureName(Main.MODID + ":forciumShard");
+		GameRegistry.registerItem(forciumShard, "forciumShard");
 	}
 }
