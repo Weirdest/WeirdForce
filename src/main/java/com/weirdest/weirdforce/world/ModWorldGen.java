@@ -32,7 +32,7 @@ public class ModWorldGen implements IWorldGenerator {
     		this.runGenerator(this.gen_forcium_ore, world, random, chunkX, chunkZ, 13, 0, 34); //13 chances to spawn, min height of 0 max of 34
     		break;
     	case -1: //Nether
-    		this.runGenerator(this.gen_volcanized_forcium, world, random, chunkX, chunkZ, 17, 0, 128);//Max nether height
+    		this.runGenerator(this.gen_volcanized_forcium, world, random, chunkX, chunkZ, 7, 0, 128);//Max nether height
     	}
     }
     

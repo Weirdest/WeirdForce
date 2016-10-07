@@ -18,6 +18,13 @@ public class ModRecipes {
 			'I', Items.iron_ingot, //Crafting Piece
 			'G', Items.gold_ingot, //Crafting Piece
 			'R', Items.redstone); //Crafting Piece
+	GameRegistry.addRecipe(new ItemStack(ModItems.powerReceiver), 
+			"SGS", "IRI", "SGS", //Crafting Shape
+			'S', Blocks.stone, //Crafting Piece
+			'I', Items.iron_ingot, //Crafting Piece
+			'G', Items.gold_ingot, //Crafting Piece
+			'R', Items.redstone); //Crafting Piece
+	
 	
 	GameRegistry.addRecipe(new ItemStack(ModItems.focalLens),
 			"SSS", "SFS", "SSS",

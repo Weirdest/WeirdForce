@@ -42,7 +42,7 @@ public final class ModBlocks {
 		projector = new ModBlockProjector(Material.iron);
 		GameRegistry.registerBlock(projector, "projector");
 		
-		volcanizedForcium = new ModBlockItemDrop("volcanizedForcium", Material.glass, "pickaxe", 3, ModItems.forciumShard, 1, 3)
+		volcanizedForcium = new ModBlockItemDrop("volcanizedForcium", Material.glass, "pickaxe", 3, ModItems.forciumShard, 1, 1)//Will always get one
 				.setHardness(15F)
 				.setResistance(500F)
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce);
