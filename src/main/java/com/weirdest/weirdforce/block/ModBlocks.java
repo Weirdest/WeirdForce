@@ -50,8 +50,8 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(volcanizedForcium, "volcanizedForcium");
 		
 		//Again, all in the constructor
-		//fieldBlock = new ModBlockField();
-		//GameRegistry.registerBlock(fieldBlock, "fieldBlock");
+		fieldBlock = new ModBlockField();
+		GameRegistry.registerBlock(fieldBlock, "fieldBlock");
 		
 	}
 }

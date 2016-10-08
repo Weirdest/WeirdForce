@@ -13,7 +13,7 @@ public class Main {
 	//Do i really need to explain this?
     public static final String MODID = "weirdforce";
     public static final String MODNAME = "The Weird Force Mod";
-    public static final String VERSION = "0.2";
+    public static final String VERSION = "0.5";
     
     //Make it now so forge won't :)
     @Instance

@@ -1,0 +1,188 @@
+package com.weirdest.weirdforce.block;
+
+import static net.minecraftforge.common.util.ForgeDirection.EAST;
+import static net.minecraftforge.common.util.ForgeDirection.NORTH;
+import static net.minecraftforge.common.util.ForgeDirection.SOUTH;
+import static net.minecraftforge.common.util.ForgeDirection.WEST;
+
+import java.util.List;
+
+import com.weirdest.weirdforce.Main;
+import com.weirdest.weirdforce.WeirdForceTabs;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+
+public class ModBlockField extends Block {
+	public String topTexture = Main.MODID + ":forceField";
+	public String sideTexture = Main.MODID + ":forceField_top";
+	public IIcon sideTextureIcon;
+
+
+	public ModBlockField() {
+		super(Material.glass);
+		this.setCreativeTab(WeirdForceTabs.tabWeirdForce); // Only for debugging
+	}
+
+
+	@SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int side) {
+		//return blockAccess.getBlock(x, y, z) == this ? false : super.shouldSideBeRendered(blockAccess, x, y, z, side); //Default
+		
+		return side <= 1 ? false : true; //Render all execpt tops
+		
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister iconReg)
+	{
+		this.blockIcon = iconReg.registerIcon(this.topTexture);
+		this.sideTextureIcon = iconReg.registerIcon(this.sideTexture);
+	}
+
+	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axisAlign, List list, Entity theEntity)
+	{
+		boolean flag  = this.canPaneConnectTo(world, x, y, z - 1, NORTH);
+		boolean flag1 = this.canPaneConnectTo(world, x, y, z + 1, SOUTH);
+		boolean flag2 = this.canPaneConnectTo(world, x - 1, y, z, WEST );
+		boolean flag3 = this.canPaneConnectTo(world, x + 1, y, z, EAST );
+
+		if ((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1))
+		{
+			if (flag2 && !flag3)
+			{
+				this.setBlockBounds(0.0F, 0.0F, 0.4375F, 0.5F, 1.0F, 0.5625F);
+				super.addCollisionBoxesToList(world, x, y, z, axisAlign, list, theEntity);
+			}
+			else if (!flag2 && flag3)
+			{
+				this.setBlockBounds(0.5F, 0.0F, 0.4375F, 1.0F, 1.0F, 0.5625F);
+				super.addCollisionBoxesToList(world, x, y, z, axisAlign, list, theEntity);
+			}
+		}
+		else
+		{
+			this.setBlockBounds(0.0F, 0.0F, 0.4375F, 1.0F, 1.0F, 0.5625F);
+			super.addCollisionBoxesToList(world, x, y, z, axisAlign, list, theEntity);
+		}
+
+		if ((!flag || !flag1) && (flag2 || flag3 || flag || flag1))
+		{
+			if (flag && !flag1)
+			{
+				this.setBlockBounds(0.4375F, 0.0F, 0.0F, 0.5625F, 1.0F, 0.5F);
+				super.addCollisionBoxesToList(world, x, y, z, axisAlign, list, theEntity);
+			}
+			else if (!flag && flag1)
+			{
+				this.setBlockBounds(0.4375F, 0.0F, 0.5F, 0.5625F, 1.0F, 1.0F);
+				super.addCollisionBoxesToList(world, x, y, z, axisAlign, list, theEntity);
+			}
+		}
+		else
+		{
+			this.setBlockBounds(0.4375F, 0.0F, 0.0F, 0.5625F, 1.0F, 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisAlign, list, theEntity);
+		}
+	}
+
+	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
+		float f = 0.4375F;
+		float f1 = 0.5625F;
+		float f2 = 0.4375F;
+		float f3 = 0.5625F;
+		boolean flag  = this.canPaneConnectTo(world, x, y, z - 1, NORTH);
+		boolean flag1 = this.canPaneConnectTo(world, x, y, z + 1, SOUTH);
+		boolean flag2 = this.canPaneConnectTo(world, x - 1, y, z, WEST );
+		boolean flag3 = this.canPaneConnectTo(world, x + 1, y, z, EAST );
+
+		if ((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1))
+		{
+			if (flag2 && !flag3)
+			{
+				f = 0.0F;
+			}
+			else if (!flag2 && flag3)
+			{
+				f1 = 1.0F;
+			}
+		}
+		else
+		{
+			f = 0.0F;
+			f1 = 1.0F;
+		}
+
+		if ((!flag || !flag1) && (flag2 || flag3 || flag || flag1))
+		{
+			if (flag && !flag1)
+			{
+				f2 = 0.0F;
+			}
+			else if (!flag && flag1)
+			{
+				f3 = 1.0F;
+			}
+		}
+		else
+		{
+			f2 = 0.0F;
+			f3 = 1.0F;
+		}
+
+		this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
+	}
+
+	public boolean canPaneConnectTo(IBlockAccess world, int x, int y, int z, ForgeDirection dir) {
+		//return canPaneConnectToBlock(world.getBlock(x, y, z)) || world.isSideSolid(x, y, z, dir.getOpposite(), false);
+
+		if(world.getBlock(x, y, z) == ModBlocks.projector || world.getBlock(x, y, z) == ModBlocks.fieldBlock) { return true; } 
+
+//		if(dir == NORTH) { //Block I'm given is to the north
+//			return world.getBlock(x, y, (z - 1)) == ModBlocks.fieldBlock ? true : false; //The block behind me must be a field block
+//		} else if(dir == SOUTH) { //Block I'm given is to the South
+//			return world.getBlock(x, y, (z + 1)) == ModBlocks.fieldBlock ? true : false;//The Block In front of me must be a field block
+//		} else if(dir == WEST) {//Block I'm given is to the West
+//			return world.getBlock((x + 1), y, z) == ModBlocks.fieldBlock ? true : false;//The block to the east of me must be a field block
+//		} else if(dir == EAST) {//Block I'm given is to the East
+//			return world.getBlock((x - 1), y, z) == ModBlocks.fieldBlock ? true : false;//The block to the west of me must be a field block
+//		}
+
+		//If not return false
+		return false;
+	}
+
+	//    public boolean canPaneConnectToBlock(Block blockInQuestion)
+	//    {
+	//        if(blockInQuestion == ModBlocks.projector || blockInQuestion == ModBlocks.fieldBlock) { 
+	//        	//Its a projector so I might be able to connect
+	//        	//I will only connect if another force block is on the opposite side
+	//        	
+	//        }
+	//        
+	//        //Other wise return false
+	//        return false;
+	//    }
+
+	public boolean isOpaqueCube() {
+		return false;
+	}
+
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
+	public void setBlockBoundsForItemRender()
+	{
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+	}
+}
