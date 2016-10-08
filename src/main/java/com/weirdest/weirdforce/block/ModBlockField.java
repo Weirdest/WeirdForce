@@ -21,6 +21,7 @@ public class ModBlockField extends BlockPane {
 		super(Main.MODID + ":forceField", Main.MODID + ":forceField_top", Material.glass, false);
 		this.setCreativeTab(WeirdForceTabs.tabWeirdForce); // Only for debugging
 		this.setBlockUnbreakable();
+		this.setLightLevel(0.5F);
 	}
 	
 	@Override
