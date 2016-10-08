@@ -4,7 +4,12 @@ itemGroup.weirdforce=Weird Force Fields
 <Items>
 item.powerReceiver.name=Power Receiver
 item.forciumIngot.name=Forcium Ingot
+item.focalLens.name=Focal Lens
+item.forciumShard.name=Forcium Shard
 
 <Blocks>
-tile.energyChanel.name=Energy Channel
+tile.energyChannel.name=Energy Channel
 tile.forciumOre.name=Forcium Ore
+tile.forcium.name=Forcium Block
+tile.projector.name=Field Projector
+tile.volcanizedForcium.name=Volcanized Forcium

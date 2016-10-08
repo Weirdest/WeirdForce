@@ -24,8 +24,8 @@ public class ModBlockProjector extends Block {
 	public void registerBlockIcons(IIconRegister reg) {
 		
 		//Top & Bottom
-		this.icons[0] = reg.registerIcon(Main.MODID + ":" + "energyChanel");
-		this.icons[1] = reg.registerIcon(Main.MODID + ":" + "energyChanel");
+		this.icons[0] = reg.registerIcon(Main.MODID + ":" + "energyChannel");
+		this.icons[1] = reg.registerIcon(Main.MODID + ":" + "energyChannel");
 		
 		//All other sides
 		for(int x = 2; x < 6; x++) {

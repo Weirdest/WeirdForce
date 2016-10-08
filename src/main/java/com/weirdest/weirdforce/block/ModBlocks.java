@@ -9,22 +9,23 @@ import net.minecraft.block.material.Material;
 
 public final class ModBlocks {
 	
-	public static Block energyChanel;
+	public static Block energyChannel;
 	public static Block forciumOre;
-	public static Block forcium; //Solid block
+	public static Block forcium; //Solid block of forcium
 	public static Block projector;
 	public static Block volcanizedForcium;
+	public static Block fieldBlock;
 	
 	public static final void init(){
 		
 		//Move to own class soon
-		energyChanel = new BasicBlock("energyChanel", Material.iron, "pickaxe", 3)
+		energyChannel = new BasicBlock("energyChannel", Material.iron, "pickaxe", 3)
 				//Called onto energyChannel
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
 				.setResistance(2000F)//Blast
 				.setHardness(35F);//Mining
 		
-		GameRegistry.registerBlock(energyChanel, "energyChanel");
+		GameRegistry.registerBlock(energyChannel, "energyChannel");
 		
 		forciumOre = new BasicBlock("forciumOre", Material.rock, "pickaxe", 2)
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
@@ -47,6 +48,10 @@ public final class ModBlocks {
 				.setResistance(500F)
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce);
 		GameRegistry.registerBlock(volcanizedForcium, "volcanizedForcium");
+		
+		//Again, all in the constructor
+		//fieldBlock = new ModBlockField();
+		//GameRegistry.registerBlock(fieldBlock, "fieldBlock");
 		
 	}
 }
