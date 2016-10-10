@@ -1,7 +1,6 @@
 package com.weirdest.weirdforce.block;
 
 import com.weirdest.weirdforce.Main;
-import com.weirdest.weirdforce.WeirdForceTabs;
 import net.minecraft.block.BlockPane;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -19,7 +18,7 @@ public class ModBlockField extends BlockPane {
 
 	public ModBlockField() {
 		super(Main.MODID + ":forceField", Main.MODID + ":forceField_top", Material.glass, false);
-		this.setCreativeTab(WeirdForceTabs.tabWeirdForce); // Only for debugging
+		//this.setCreativeTab(WeirdForceTabs.tabWeirdForce); // Only for debugging (Debugging over)
 		this.setBlockUnbreakable();
 		this.setLightLevel(0.5F);
 	}
