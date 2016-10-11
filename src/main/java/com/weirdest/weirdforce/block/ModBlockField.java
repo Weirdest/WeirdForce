@@ -1,6 +1,8 @@
 package com.weirdest.weirdforce.block;
 
 import com.weirdest.weirdforce.Main;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockPane;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -17,10 +19,12 @@ public class ModBlockField extends BlockPane {
 
 
 	public ModBlockField() {
-		super(Main.MODID + ":forceField", Main.MODID + ":forceField_top", Material.glass, false);
+		super(Main.MODID + ":forceField", Main.MODID + ":forceField_top", Material.rock, false);
 		//this.setCreativeTab(WeirdForceTabs.tabWeirdForce); // Only for debugging (Debugging over)
 		this.setBlockUnbreakable();
 		this.setLightLevel(0.5F);
+		this.setHardness(1000000F);//Ya nope
+		this.setResistance(1000000F);//Still nope
 	}
 	
 	@Override
@@ -30,5 +34,10 @@ public class ModBlockField extends BlockPane {
 	
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity killYou) {
 		killYou.attackEntityFrom(DamageSource.generic, 7.5F);//Do a lot of damage on contact
+	}
+	
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+		//Do Nothing?
+		System.out.println("Block break!!!!");
 	}
 }
