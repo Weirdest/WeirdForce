@@ -26,7 +26,7 @@ public class ModBlockProjector extends Block {
 		super(material);
 		this.setBlockName("projector");
 		this.setCreativeTab(WeirdForceTabs.tabWeirdForce);
-		this.setResistance(5000F);
+		this.setResistance(500000F);
 		this.setHardness(12F);
 	}
 	
@@ -71,36 +71,36 @@ public class ModBlockProjector extends Block {
 	
     }
 	
-    public boolean setBlockPatch(int p_147465_1_, int p_147465_2_, int p_147465_3_, Block p_147465_4_/*, int p_147465_5_, int p_147465_6_*/) //original defaults was 0 & 3
+    public boolean setBlockPatch(int x, int y, int z, Block blockRef /*int mz, int p_147465_6_*/) //original defaults was 0 & 3
     {
-        if (p_147465_1_ >= -30000000 && p_147465_3_ >= -30000000 && p_147465_1_ < 30000000 && p_147465_3_ < 30000000)
+        if (x >= -30000000 && z >= -30000000 && x < 30000000 && z < 30000000)
         {
-            if (p_147465_2_ < 0)
+            if (y < 0)
             {
                 return false;
             }
-            else if (p_147465_2_ >= 256)
+            else if (y >= 256)
             {
                 return false;
             }
             else
             {
-                Chunk chunk = this.myWorld.getChunkFromChunkCoords(p_147465_1_ >> 4, p_147465_3_ >> 4);
+                Chunk chunk = this.myWorld.getChunkFromChunkCoords(x >> 4, z >> 4);
                 Block block1 = null;
                 net.minecraftforge.common.util.BlockSnapshot blockSnapshot = null;
 
                 if ((3 & 1) != 0)
                 {
-                    block1 = chunk.getBlock(p_147465_1_ & 15, p_147465_2_, p_147465_3_ & 15);
+                    block1 = chunk.getBlock(x & 15, y, z & 15);
                 }
 
                 if (this.myWorld.captureBlockSnapshots && !this.myWorld.isRemote)
                 {
-                    blockSnapshot = net.minecraftforge.common.util.BlockSnapshot.getBlockSnapshot(this.myWorld, p_147465_1_, p_147465_2_, p_147465_3_, 3);
+                    blockSnapshot = net.minecraftforge.common.util.BlockSnapshot.getBlockSnapshot(this.myWorld, x, y, z, 3);
                     this.myWorld.capturedBlockSnapshots.add(blockSnapshot);
                 }
 
-                boolean flag = chunk.func_150807_a(p_147465_1_ & 15, p_147465_2_, p_147465_3_ & 15, p_147465_4_, 0);
+                boolean flag = chunk.func_150807_a(x & 15, y, z & 15, blockRef, 0);
 
                 if (!flag && blockSnapshot != null)
                 {
@@ -109,13 +109,13 @@ public class ModBlockProjector extends Block {
                 }
 
                 this.myWorld.theProfiler.startSection("checkLight");
-                this.myWorld.func_147451_t(p_147465_1_, p_147465_2_, p_147465_3_);
+                this.myWorld.func_147451_t(x, y, z);
                 this.myWorld.theProfiler.endSection();
 
                 if (flag && blockSnapshot == null) // Don't notify clients or update physics while capturing blockstates
                 {
                     // Modularize client and physic updates
-                    markAndNotifyBlockPatch(p_147465_1_, p_147465_2_, p_147465_3_, chunk, block1, p_147465_4_, 3);
+                    markAndNotifyBlockPatch(x, y, z, chunk, block1, blockRef, 3);
                 }
 
                 return flag;
@@ -181,58 +181,79 @@ public class ModBlockProjector extends Block {
 	}
 	
 	//FUNCTIONALITY!!!!!!
-	// TODO Recreate original function with setBlock override to prevent notify
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block neighborBlock) {
 		if(!world.isRemote) {
 			//I can edit this world
-			
-			if(world.isBlockIndirectlyGettingPowered(x, y, z)) {
-				//Im powered so... Turn me on!
-				powerToggle(world, x, y, z, ModBlocks.fieldBlock);
-			} else {
-				//Must be off then
-				powerToggle(world, x, y, z, Blocks.air);
-			}
+			powerToggle(world, x, y, z); 
+
 		}
 	}
 
-	public void powerToggle(World world, int x, int y, int z, Block replaceWith) {
+
+	public void powerToggle(World world, int x, int y, int z) {
 		//Check if there is another projector 8 blocks in 1d direction
 		//1d being forward, back, left, right
 		for(int n = 1; n < 10; n++) {
 			
 			//Check towards north first
 			if(world.getBlock(x, y, (z - n)) == ModBlocks.projector) {
-				
+				if(!world.isBlockIndirectlyGettingPowered(x, y, (z - n)) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
 				//If projector is found then set all blocks before it as replaceWith
-				for(int k = 1; k < n; k++) {
-					setBlockPatch(x, y, (z - k), replaceWith);
+					for(int k = 1; k < n; k++) {
+						setBlockPatch(x, y, (z - k), Blocks.air);
+					}
+					
+				} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y, (z - n))) { //If i'm powered or they are
+					for(int k = 1; k < n; k++) {
+						setBlockPatch(x, y, (z - k), ModBlocks.fieldBlock);
+					}
 				}
 			} 
 			
 			//Check South
 			if(world.getBlock(x, y, (z + n)) == ModBlocks.projector) {
-				
-				for(int k = 1; k < n; k++) {
-					setBlockPatch(x, y, (z + k), replaceWith);
+				if(!world.isBlockIndirectlyGettingPowered(x, y, (z + n)) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
+				//If projector is found then set all blocks before it as replaceWith
+					for(int k = 1; k < n; k++) {
+						setBlockPatch(x, y, (z + k), Blocks.air);
+					}
+					
+				} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y, (z + n))) { //If i'm powered or they are
+					for(int k = 1; k < n; k++) {
+						setBlockPatch(x, y, (z + k), ModBlocks.fieldBlock);
+					}
 				}
-			} 
+			}
 			
 			//Check west
 			if(world.getBlock((x - n), y, z) == ModBlocks.projector) {
-				
-				for(int k = 1; k < n; k++) {
-					setBlockPatch((x - k), y, z, replaceWith);
+				if(!world.isBlockIndirectlyGettingPowered((x - n), y, z) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
+				//If projector is found then set all blocks before it as replaceWith
+					for(int k = 1; k < n; k++) {
+						setBlockPatch((x - k), y, z, Blocks.air);
+					}
+					
+				} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered((x - n), y, z)) { //If i'm powered or they are
+					for(int k = 1; k < n; k++) {
+						setBlockPatch((x - k), y, z, ModBlocks.fieldBlock);
+					}
 				}
 			} 
 			
 			//Check East
 			if(world.getBlock((x + n), y, z) == ModBlocks.projector) {
-				
-				for(int k = 1; k < n; k++) {
-					setBlockPatch((x + k), y, z, replaceWith);
+				if(!world.isBlockIndirectlyGettingPowered((x + n), y, z) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
+				//If projector is found then set all blocks before it as replaceWith
+					for(int k = 1; k < n; k++) {
+						setBlockPatch((x + k), y, z, Blocks.air);
+					}
+					
+				} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered((x + n), y, z)) { //If i'm powered or they are
+					for(int k = 1; k < n; k++) {
+						setBlockPatch((x + k), y, z, ModBlocks.fieldBlock);
+					}
 				}
-			}
+			} 
 		}//For() Container
 	}//Method Container
 
