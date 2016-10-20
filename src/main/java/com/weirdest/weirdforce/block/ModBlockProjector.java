@@ -233,7 +233,7 @@ public class ModBlockProjector extends Block {
 
 
 	public boolean isValidBlock(World world, int x, int y, int z) {
-		if(world.getBlock(x, y, z).isAir(world, x, y, z) || isPlant(world.getBlock(x, y, z)) || world.getBlock(x, y, z) == ModBlocks.fieldBlock || world.getBlock(x, y, z) == Blocks.snow_layer || world.getBlock(x, y, z) == ModBlocks.projector) {
+		if(world.getBlock(x, y, z).isAir(world, x, y, z) || isPlant(world.getBlock(x, y, z)) || world.getBlock(x, y, z) == ModBlocks.fieldBlock || world.getBlock(x, y, z) == Blocks.snow_layer) {
 			//If its air, bush, fieldBlock, or projector then its valid for shield method
 			return true;
 		}
@@ -268,6 +268,7 @@ public class ModBlockProjector extends Block {
 		switch(direction) {
 		case NORTH:
 			for(int h = 1; h < 10; h++) {
+				if(world.getBlock(x, y, z - h) == ModBlocks.projector) {break;}
 				if(!isValidBlock(world, x, y, z - h)) {
 					//exit and return false because invalid block has been found
 					msgNearPlayerObstruction(world, x, y, z - h);
@@ -278,6 +279,7 @@ public class ModBlockProjector extends Block {
 			return true;
 		case SOUTH:
 			for(int h = 1; h < 10; h++) {
+				if(world.getBlock(x, y, z + h) == ModBlocks.projector) {break;}
 				if(!isValidBlock(world, x, y, z + h)) {
 					//exit and return false because invalid block has been found
 					msgNearPlayerObstruction(world, x, y, z + h);
@@ -288,16 +290,18 @@ public class ModBlockProjector extends Block {
 			return true;
 		case WEST:
 			for(int h = 1; h < 10; h++) {
+				if(world.getBlock(x - h, y, z) == ModBlocks.projector) {break;}
 				if(!isValidBlock(world, x - h, y, z)) {
 					//exit and return false because invalid block has been found
 					msgNearPlayerObstruction(world, x - h, y, z);
 					return false;
-				}
+				} 
 			}
 			//No bad block was found so return true
 			return true;
 		case EAST:
 			for(int h = 1; h < 10; h++) {
+				if(world.getBlock(x + h, y, z) == ModBlocks.projector) {break;}
 				if(!isValidBlock(world, x + h, y, z)) {
 					//exit and return false because invalid block has been found
 					msgNearPlayerObstruction(world, x + h, y, z);
