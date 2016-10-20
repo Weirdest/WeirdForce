@@ -32,11 +32,11 @@ public class ModRecipes {
 			'F', ModItems.forciumShard);
 	
 	//Block Recipes
-	GameRegistry.addRecipe(new ItemStack(ModBlocks.energyChannel),
-			"SFS", "FPF", "SFS",
-			'S', Blocks.stone,
-			'F', ModItems.forciumIngot,
-			'P', ModItems.powerReceiver);
+//	GameRegistry.addRecipe(new ItemStack(ModBlocks.energyChannel),
+//			"SFS", "FPF", "SFS",
+//			'S', Blocks.stone,
+//			'F', ModItems.forciumIngot,
+//			'P', ModItems.powerReceiver);
 	
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.forcium),
 			"###", "###", "###",

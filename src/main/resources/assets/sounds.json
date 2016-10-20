@@ -1,0 +1,19 @@
+{
+    "block.projector.on":
+    {
+        "category": "neutral",
+        "sounds":
+        [
+            "blocks/projector/On"
+        ]
+    },
+    "block.projector.Off":
+    {
+        "category": "neutral",
+        "sounds":
+        [
+            "blocks/projector/Off.ogg"
+        ]
+    }
+
+}

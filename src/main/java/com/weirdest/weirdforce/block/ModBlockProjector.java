@@ -148,11 +148,13 @@ public class ModBlockProjector extends Block {
 						if(!world.isBlockIndirectlyGettingPowered(x, y, (z - n)) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
 							//So i have another projector, and they are both turned off
 							for(int k = 1; k < n; k++) {
+								if(world.getBlock(x, y, z - k) == ModBlocks.projector) {break;}
 								setBlockPatch(x, y, (z - k), Blocks.air, world);
 							}
 
 						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y, (z - n))) { //If i'm powered or they are
 							for(int k = 1; k < n; k++) {
+								if(world.getBlock(x, y, z - k) == ModBlocks.projector) {break;}
 								setBlockPatch(x, y, (z - k), ModBlocks.fieldBlock, world);
 							}
 						}
@@ -168,12 +170,13 @@ public class ModBlockProjector extends Block {
 						if(!world.isBlockIndirectlyGettingPowered(x, y, (z + n)) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
 							//If projector is found then set all blocks before it as replaceWith
 							for(int k = 1; k < n; k++) {
-
+								if(world.getBlock(x, y, z + k) == ModBlocks.projector) {break;}
 								setBlockPatch(x, y, (z + k), Blocks.air, world);
 							}
 
 						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y, (z + n))) { //If i'm powered or they are
 							for(int k = 1; k < n; k++) {
+								if(world.getBlock(x, y, z + k) == ModBlocks.projector) {break;}
 								setBlockPatch(x, y, (z + k), ModBlocks.fieldBlock, world);
 							}
 						}
@@ -189,11 +192,13 @@ public class ModBlockProjector extends Block {
 						if(!world.isBlockIndirectlyGettingPowered((x - n), y, z) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
 							//If projector is found then set all blocks before it as replaceWith
 							for(int k = 1; k < n; k++) {
+								if(world.getBlock(x - k, y, z) == ModBlocks.projector) {break;}
 								setBlockPatch((x - k), y, z, Blocks.air, world);
 							}
 
 						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered((x - n), y, z)) { //If i'm powered or they are
 							for(int k = 1; k < n; k++) {
+								if(world.getBlock(x - k, y, z) == ModBlocks.projector) {break;}
 								setBlockPatch((x - k), y, z, ModBlocks.fieldBlock, world);
 							}
 						}
@@ -209,11 +214,13 @@ public class ModBlockProjector extends Block {
 						if(!world.isBlockIndirectlyGettingPowered((x + n), y, z) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
 							//If projector is found then set all blocks before it as replaceWith
 							for(int k = 1; k < n; k++) {
+								if(world.getBlock(x + k, y, z) == ModBlocks.projector) {break;}
 								setBlockPatch((x + k), y, z, Blocks.air, world);
 							}
 
 						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered((x + n), y, z)) { //If i'm powered or they are
 							for(int k = 1; k < n; k++) {
+								if(world.getBlock(x + k, y, z) == ModBlocks.projector) {break;}
 								setBlockPatch((x + k), y, z, ModBlocks.fieldBlock, world);
 							}
 						}
@@ -226,7 +233,7 @@ public class ModBlockProjector extends Block {
 
 
 	public boolean isValidBlock(World world, int x, int y, int z) {
-		if(world.getBlock(x, y, z).isAir(world, x, y, z) || isPlant(world.getBlock(x, y, z)) || world.getBlock(x, y, z) == ModBlocks.fieldBlock || world.getBlock(x, y, z) == ModBlocks.projector || world.getBlock(x, y, z) == Blocks.snow_layer) {
+		if(world.getBlock(x, y, z).isAir(world, x, y, z) || isPlant(world.getBlock(x, y, z)) || world.getBlock(x, y, z) == ModBlocks.fieldBlock || world.getBlock(x, y, z) == Blocks.snow_layer || world.getBlock(x, y, z) == ModBlocks.projector) {
 			//If its air, bush, fieldBlock, or projector then its valid for shield method
 			return true;
 		}
@@ -260,7 +267,7 @@ public class ModBlockProjector extends Block {
 	public boolean isDirectionVaild(World world, int x, int y, int z, ForgeDirection direction) {
 		switch(direction) {
 		case NORTH:
-			for(int h = 0; h < 10; h++) {
+			for(int h = 1; h < 10; h++) {
 				if(!isValidBlock(world, x, y, z - h)) {
 					//exit and return false because invalid block has been found
 					msgNearPlayerObstruction(world, x, y, z - h);
@@ -270,7 +277,7 @@ public class ModBlockProjector extends Block {
 			//No bad block was found so return true
 			return true;
 		case SOUTH:
-			for(int h = 0; h < 10; h++) {
+			for(int h = 1; h < 10; h++) {
 				if(!isValidBlock(world, x, y, z + h)) {
 					//exit and return false because invalid block has been found
 					msgNearPlayerObstruction(world, x, y, z + h);
@@ -280,7 +287,7 @@ public class ModBlockProjector extends Block {
 			//No bad block was found so return true
 			return true;
 		case WEST:
-			for(int h = 0; h < 10; h++) {
+			for(int h = 1; h < 10; h++) {
 				if(!isValidBlock(world, x - h, y, z)) {
 					//exit and return false because invalid block has been found
 					msgNearPlayerObstruction(world, x - h, y, z);
@@ -290,7 +297,7 @@ public class ModBlockProjector extends Block {
 			//No bad block was found so return true
 			return true;
 		case EAST:
-			for(int h = 0; h < 10; h++) {
+			for(int h = 1; h < 10; h++) {
 				if(!isValidBlock(world, x + h, y, z)) {
 					//exit and return false because invalid block has been found
 					msgNearPlayerObstruction(world, x + h, y, z);
