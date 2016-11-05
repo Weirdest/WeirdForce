@@ -1,0 +1,109 @@
+[20:56:24] [main/INFO]: Setting user: Player716
+[20:56:26] [Client thread/INFO]: LWJGL Version: 2.9.1
+[20:56:27] [Client thread/ERROR]: Couldn't initialize twitch stream
+[20:56:37] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:The Weird Force Mod
+[20:56:38] [Sound Library Loader/INFO]: Sound engine started
+[20:56:39] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[20:56:39] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[20:56:39] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:The Weird Force Mod
+[20:56:39] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[20:56:40] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[20:56:40] [Sound Library Loader/INFO]: Sound engine started
+[20:57:35] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[20:57:35] [Server thread/INFO]: Generating keypair
+[20:57:35] [Server thread/INFO]: Converting map!
+[20:57:35] [Server thread/INFO]: Scanning folders...
+[20:57:35] [Server thread/INFO]: Total conversion count is 0
+[20:57:36] [Server thread/INFO]: Preparing start region for level 0
+[20:57:37] [Server thread/INFO]: Preparing spawn area: 4%
+[20:57:38] [Server thread/INFO]: Preparing spawn area: 12%
+[20:57:39] [Server thread/INFO]: Preparing spawn area: 20%
+[20:57:40] [Server thread/INFO]: Preparing spawn area: 27%
+[20:57:41] [Server thread/INFO]: Preparing spawn area: 36%
+[20:57:42] [Server thread/INFO]: Preparing spawn area: 49%
+[20:57:43] [Server thread/INFO]: Preparing spawn area: 62%
+[20:57:44] [Server thread/INFO]: Preparing spawn area: 74%
+[20:57:46] [Server thread/INFO]: Preparing spawn area: 84%
+[20:57:47] [Server thread/INFO]: Preparing spawn area: 92%
+[20:57:47] [Server thread/INFO]: Changing view distance to 12, from 10
+[20:57:48] [Server thread/INFO]: Player716[local:E:7cb40a54] logged in with entity id 263 at (-146.5, 67.0, 242.5)
+[20:57:48] [Server thread/INFO]: Player716 joined the game
+[20:57:51] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 3410ms behind, skipping 68 tick(s)
+[20:57:56] [Server thread/INFO]: Player716 has just earned the achievement [Taking Inventory]
+[20:57:56] [Client thread/INFO]: [CHAT] Player716 has just earned the achievement [Taking Inventory]
+[20:58:02] [Client thread/INFO]: Warning: Clientside chunk ticking took 213 ms
+[20:58:02] [Client thread/INFO]: Warning: Clientside chunk ticking took 282 ms
+[20:58:03] [Client thread/INFO]: Warning: Clientside chunk ticking took 378 ms
+[20:58:03] [Client thread/INFO]: Warning: Clientside chunk ticking took 183 ms
+[20:58:05] [Client thread/INFO]: Warning: Clientside chunk ticking took 178 ms
+[20:58:05] [Client thread/INFO]: Warning: Clientside chunk ticking took 200 ms
+[20:58:06] [Client thread/INFO]: Warning: Clientside chunk ticking took 178 ms
+[20:58:06] [Client thread/INFO]: Warning: Clientside chunk ticking took 102 ms
+[20:58:07] [Client thread/INFO]: Warning: Clientside chunk ticking took 154 ms
+[20:58:08] [Client thread/INFO]: Warning: Clientside chunk ticking took 160 ms
+[20:58:08] [Client thread/INFO]: Warning: Clientside chunk ticking took 172 ms
+[20:58:08] [Client thread/INFO]: Warning: Clientside chunk ticking took 193 ms
+[20:58:09] [Client thread/INFO]: Warning: Clientside chunk ticking took 132 ms
+[20:58:10] [Client thread/INFO]: Warning: Clientside chunk ticking took 128 ms
+[20:58:11] [Client thread/INFO]: Warning: Clientside chunk ticking took 463 ms
+[20:58:11] [Client thread/INFO]: Warning: Clientside chunk ticking took 131 ms
+[20:58:11] [Client thread/INFO]: Warning: Clientside chunk ticking took 122 ms
+[20:58:11] [Client thread/INFO]: Warning: Clientside chunk ticking took 124 ms
+[20:58:12] [Client thread/INFO]: Warning: Clientside chunk ticking took 119 ms
+[20:58:12] [Client thread/INFO]: Warning: Clientside chunk ticking took 124 ms
+[20:58:12] [Client thread/INFO]: Warning: Clientside chunk ticking took 121 ms
+[20:58:12] [Client thread/INFO]: Warning: Clientside chunk ticking took 125 ms
+[20:58:12] [Client thread/INFO]: Warning: Clientside chunk ticking took 120 ms
+[20:58:12] [Client thread/INFO]: Warning: Clientside chunk ticking took 128 ms
+[20:58:13] [Client thread/INFO]: Warning: Clientside chunk ticking took 125 ms
+[20:58:13] [Client thread/INFO]: Warning: Clientside chunk ticking took 119 ms
+[20:58:13] [Client thread/INFO]: Warning: Clientside chunk ticking took 123 ms
+[20:58:14] [Client thread/INFO]: Warning: Clientside chunk ticking took 122 ms
+[20:58:14] [Client thread/INFO]: Warning: Clientside chunk ticking took 124 ms
+[20:58:14] [Client thread/INFO]: Warning: Clientside chunk ticking took 129 ms
+[20:58:18] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 13386ms behind, skipping 267 tick(s)
+[20:58:25] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 3518ms behind, skipping 70 tick(s)
+[20:58:29] [Server thread/INFO]: Saving and pausing game...
+[20:58:29] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
+[20:58:30] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
+[20:58:30] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
+[20:58:30] [Server thread/INFO]: Stopping server
+[20:58:30] [Server thread/INFO]: Saving players
+[20:58:30] [Server thread/INFO]: Saving worlds
+[20:58:30] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
+[20:58:30] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
+[20:58:30] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
+[20:58:38] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[20:58:38] [Server thread/INFO]: Generating keypair
+[20:58:38] [Server thread/INFO]: Preparing start region for level 0
+[20:58:39] [Server thread/INFO]: Changing view distance to 12, from 10
+[20:58:39] [Server thread/INFO]: Player716[local:E:6e5b1a99] logged in with entity id 6588 at (-146.27354727800721, 67.0, 239.03739159462447)
+[20:58:39] [Server thread/INFO]: Player716 joined the game
+[20:58:42] [Server thread/INFO]: Saving and pausing game...
+[20:58:42] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
+[20:58:42] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
+[20:58:42] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
+[20:59:01] [Client thread/INFO]: Warning: Clientside chunk ticking took 188 ms
+[20:59:02] [Client thread/INFO]: Warning: Clientside chunk ticking took 217 ms
+[20:59:02] [Client thread/INFO]: Warning: Clientside chunk ticking took 166 ms
+[20:59:02] [Client thread/INFO]: Warning: Clientside chunk ticking took 154 ms
+[20:59:06] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2282ms behind, skipping 45 tick(s)
+[20:59:25] [Client thread/INFO]: Warning: Clientside chunk ticking took 128 ms
+[20:59:27] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 6032ms behind, skipping 120 tick(s)
+[21:00:03] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2186ms behind, skipping 43 tick(s)
+[21:00:21] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 3754ms behind, skipping 75 tick(s)
+[21:01:19] [Client thread/INFO]: [CHAT] Saved screenshot as 2016-11-04_21.01.18.png
+[21:02:21] [Client thread/INFO]: [CHAT] Saved screenshot as 2016-11-04_21.02.20.png
+[21:02:28] [Client thread/INFO]: [CHAT] Saved screenshot as 2016-11-04_21.02.27.png
+[21:02:59] [Client thread/INFO]: [CHAT] Saved screenshot as 2016-11-04_21.02.59.png
+[21:03:11] [Server thread/INFO]: Saving and pausing game...
+[21:03:11] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
+[21:03:11] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
+[21:03:11] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
+[21:03:13] [Server thread/INFO]: Stopping server
+[21:03:13] [Server thread/INFO]: Saving players
+[21:03:13] [Server thread/INFO]: Saving worlds
+[21:03:13] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
+[21:03:13] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
+[21:03:13] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
+[21:03:15] [Client thread/INFO]: Stopping!
