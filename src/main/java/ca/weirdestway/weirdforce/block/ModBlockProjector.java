@@ -142,7 +142,7 @@ public class ModBlockProjector extends Block {
 			//I can edit this world
 			//Check if there is another projector 8 blocks in 1d direction
 			//1d being forward, back, left, right
-			for(int n = 1; n < 10; n++) {
+			for(int n = 1; n < ConfigHandler.maxConnect + 1; n++) {
 				//Check towards north first
 				if(world.getBlock(x, y, (z - n)) == ModBlocks.projector) {
 					if(isDirectionVaild(world, x, y, z, ForgeDirection.NORTH)) {
@@ -150,7 +150,9 @@ public class ModBlockProjector extends Block {
 							//So i have another projector, and they are both turned off
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x, y, z - k) == ModBlocks.projector) {break;}
-								setBlockPatch(x, y, (z - k), Blocks.air, world);
+								if(world.getBlock(x, y, z - k) == ModBlocks.fieldBlock) {
+									setBlockPatch(x, y, z - k, Blocks.air, world);
+								}
 							}
 
 						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y, (z - n))) { //If i'm powered or they are
@@ -164,7 +166,7 @@ public class ModBlockProjector extends Block {
 			}
 
 
-			for(int n = 1; n < 10; n++) {
+			for(int n = 1; n < ConfigHandler.maxConnect + 1; n++) {
 				//Check South
 				if(world.getBlock(x, y, (z + n)) == ModBlocks.projector) {
 					if(isDirectionVaild(world, x, y, z, ForgeDirection.SOUTH)) {
@@ -172,12 +174,15 @@ public class ModBlockProjector extends Block {
 							//If projector is found then set all blocks before it as replaceWith
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x, y, z + k) == ModBlocks.projector) {break;}
-								setBlockPatch(x, y, (z + k), Blocks.air, world);
+								if(world.getBlock(x, y, z + k) == ModBlocks.fieldBlock) {
+									setBlockPatch(x, y, z + k, Blocks.air, world);
+								}
 							}
 
 						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y, (z + n))) { //If i'm powered or they are
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x, y, z + k) == ModBlocks.projector) {break;}
+								
 								setBlockPatch(x, y, (z + k), ModBlocks.fieldBlock, world);
 							}
 						}
@@ -186,7 +191,7 @@ public class ModBlockProjector extends Block {
 
 			} 
 
-			for(int n = 1; n < 10; n++) {
+			for(int n = 1; n < ConfigHandler.maxConnect + 1; n++) {
 				//Check west
 				if(world.getBlock((x - n), y, z) == ModBlocks.projector) {
 					if(isDirectionVaild(world, x, y, z, ForgeDirection.WEST)) {
@@ -194,7 +199,9 @@ public class ModBlockProjector extends Block {
 							//If projector is found then set all blocks before it as replaceWith
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x - k, y, z) == ModBlocks.projector) {break;}
-								setBlockPatch((x - k), y, z, Blocks.air, world);
+								if(world.getBlock(x - k, y, z) == ModBlocks.fieldBlock) {
+									setBlockPatch((x - k), y, z, Blocks.air, world);
+								}
 							}
 
 						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered((x - n), y, z)) { //If i'm powered or they are
@@ -208,7 +215,7 @@ public class ModBlockProjector extends Block {
 
 			}
 
-			for(int n = 1; n < 10; n++) {
+			for(int n = 1; n < ConfigHandler.maxConnect + 1; n++) {
 				//Check East
 				if(world.getBlock((x + n), y, z) == ModBlocks.projector) {
 					if(isDirectionVaild(world, x, y, z, ForgeDirection.EAST)) {
@@ -216,7 +223,9 @@ public class ModBlockProjector extends Block {
 							//If projector is found then set all blocks before it as replaceWith
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x + k, y, z) == ModBlocks.projector) {break;}
-								setBlockPatch((x + k), y, z, Blocks.air, world);
+								if(world.getBlock(x + k, y, z) == ModBlocks.fieldBlock) {
+									setBlockPatch((x + k), y, z, Blocks.air, world);
+								}
 							}
 
 						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered((x + n), y, z)) { //If i'm powered or they are
