@@ -4,5 +4,6 @@
   "description": "This mod contains force fields & will have some other cool security stuff",
   "version": "1.1.1",
   "mcversion": "1.7.10",
-  "authorList": ["Weirdest"]
+  "authorList": ["Weirdest"],
+  "logoFile": "logo.png"
 }]

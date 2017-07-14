@@ -1,6 +1,6 @@
 package ca.weirdestway.weirdforce.item;
 
-import ca.weirdestway.weirdforce.Main;
+import ca.weirdestway.weirdforce.WeirdForce;
 import ca.weirdestway.weirdforce.lib.WeirdForceTabs;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
@@ -18,7 +18,7 @@ public final class ModItems {
 				.setUnlocalizedName("powerReceiver")
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
 				//Would be weirdForce:powerReceiver
-				.setTextureName(Main.MODID + ":powerReceiver");
+				.setTextureName(WeirdForce.MODID + ":powerReceiver");
 
 		//Register the item in the game
 		GameRegistry.registerItem(powerReceiver, "powerReceiver");
@@ -27,19 +27,19 @@ public final class ModItems {
 		forciumIngot = new Item()
 				.setUnlocalizedName("forciumIngot")
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
-				.setTextureName(Main.MODID + ":forciumIngot");
+				.setTextureName(WeirdForce.MODID + ":forciumIngot");
 		GameRegistry.registerItem(forciumIngot, "forciumIngot");
 
 		focalLens = new Item()
 				.setUnlocalizedName("focalLens")
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
-				.setTextureName(Main.MODID + ":focalLens");
+				.setTextureName(WeirdForce.MODID + ":focalLens");
 		GameRegistry.registerItem(focalLens, "focalLens");
 
 		forciumShard = new Item()
 				.setUnlocalizedName("forciumShard")
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
-				.setTextureName(Main.MODID + ":forciumShard");
+				.setTextureName(WeirdForce.MODID + ":forciumShard");
 		GameRegistry.registerItem(forciumShard, "forciumShard");
 	}
 }

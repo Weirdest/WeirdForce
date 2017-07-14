@@ -8,3 +8,15 @@
 eclipse/
 
 screenshots/
+
+workspace/
+
+logs/
+
+config/
+
+saves/
+
+usernamecache\.json
+
+options\.txt

@@ -2,7 +2,7 @@ package ca.weirdestway.weirdforce.block;
 
 import java.util.Random;
 
-import ca.weirdestway.weirdforce.Main;
+import ca.weirdestway.weirdforce.WeirdForce;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -16,7 +16,7 @@ public class ModBlockItemDrop extends Block {
     protected ModBlockItemDrop(String unlocalizedName, Material mat, String HarvestTool, int HarvestLevel, Item drop, int least_quantity, int most_quantity) {
         super(mat);
         this.setBlockName(unlocalizedName);
-        this.setBlockTextureName(Main.MODID + ":" + unlocalizedName);
+        this.setBlockTextureName(WeirdForce.MODID + ":" + unlocalizedName);
         this.setStepSound(soundTypeStone);
         this.setHarvestLevel(HarvestTool, HarvestLevel);
         this.drop = drop;
@@ -27,7 +27,7 @@ public class ModBlockItemDrop extends Block {
     protected ModBlockItemDrop(String unlocalizedName, Material mat, String HarvestTool, int HarvestLevel, Item drop) {
         super(mat);
         this.setBlockName(unlocalizedName);
-        this.setBlockTextureName(Main.MODID + ":" + unlocalizedName);
+        this.setBlockTextureName(WeirdForce.MODID + ":" + unlocalizedName);
         this.setStepSound(soundTypeStone);
         this.setHarvestLevel(HarvestTool, HarvestLevel);
         this.drop = drop;

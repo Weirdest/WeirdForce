@@ -1,6 +1,6 @@
 package ca.weirdestway.weirdforce.block;
 
-import ca.weirdestway.weirdforce.Main;
+import ca.weirdestway.weirdforce.WeirdForce;
 import ca.weirdestway.weirdforce.lib.ConfigHandler;
 import ca.weirdestway.weirdforce.lib.WeirdForceTabs;
 import net.minecraft.block.Block;
@@ -32,12 +32,12 @@ public class ModBlockProjector extends Block {
 	public void registerBlockIcons(IIconRegister reg) {
 
 		//Top & Bottom
-		this.icons[0] = reg.registerIcon(Main.MODID + ":" + "energyChannel");
-		this.icons[1] = reg.registerIcon(Main.MODID + ":" + "energyChannel");
+		this.icons[0] = reg.registerIcon(WeirdForce.MODID + ":" + "energyChannel");
+		this.icons[1] = reg.registerIcon(WeirdForce.MODID + ":" + "energyChannel");
 
 		//All other sides
 		for(int x = 2; x < 6; x++) {
-			this.icons[x] = reg.registerIcon(Main.MODID + ":" + "projectorSide");
+			this.icons[x] = reg.registerIcon(WeirdForce.MODID + ":" + "projectorSide");
 		}
 	}
 
@@ -234,7 +234,7 @@ public class ModBlockProjector extends Block {
 
 
 	public boolean isValidBlock(World world, int x, int y, int z) {
-		
+
 		//If we are able to overwrite blocks as per config then go for it!
 		if(!ConfigHandler.overwriteBlock) { 
 			if(world.getBlock(x, y, z).isAir(world, x, y, z) || isPlant(world.getBlock(x, y, z)) || world.getBlock(x, y, z) == ModBlocks.fieldBlock || world.getBlock(x, y, z) == Blocks.snow_layer) {
@@ -245,9 +245,9 @@ public class ModBlockProjector extends Block {
 			//Its not replaceable
 			msgNearPlayerObstruction(world, x, y, z);
 			return false;
-			
+
 		} else {
-			
+
 			//Every block is valid!
 			return true;
 		}
@@ -262,12 +262,13 @@ public class ModBlockProjector extends Block {
 	}
 
 	public void msgNearPlayerObstruction(World world, int x, int y, int z) {
-		if(!this.lastObstructionCoords.equals(coordId(x, y, z)) || this.lastObstructionCoords.equals("init"))
-			world.getClosestPlayer((double)x, (double)y, (double)z, 25).addChatMessage(new ChatComponentText("Please remove obstruction @ " + x + ", " + y + ", " + z));
+		if(ConfigHandler.msgObstruction) { //If enabled
+			if(!this.lastObstructionCoords.equals(coordId(x, y, z)) || this.lastObstructionCoords.equals("init"))
+				world.getClosestPlayer((double)x, (double)y, (double)z, 25).addChatMessage(new ChatComponentText("Please remove obstruction @ " + x + ", " + y + ", " + z));
 
-
-		//Generates a unique string based on the last used coords
-		this.lastObstructionCoords = coordId(x, y, z);
+			//Generates a unique string based on the last used coords
+			this.lastObstructionCoords = coordId(x, y, z);
+		}
 	}
 
 	public String coordId(int x, int y, int z) {

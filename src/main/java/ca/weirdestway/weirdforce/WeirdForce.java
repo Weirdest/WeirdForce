@@ -12,8 +12,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod(modid = Main.MODID, name = Main.MODNAME, version = Main.VERSION, guiFactory = "ca.weirdestway.weirdforce.lib.WeirdGuiFactory")
-public class Main {
+@Mod(modid = WeirdForce.MODID, name = WeirdForce.MODNAME, version = WeirdForce.VERSION, guiFactory = "ca.weirdestway.weirdforce.lib.WeirdGuiFactory")
+public class WeirdForce {
 	//Do i really need to explain this?
     public static final String MODID = "weirdforce";
     public static final String MODNAME = "The Weird Force Mod";
@@ -24,7 +24,7 @@ public class Main {
     
     //Create Instance of Main Class
     @Instance
-    public static Main instance = new Main();
+    public static WeirdForce instance = new WeirdForce();
     
     //Declare Proxies
     @SidedProxy(clientSide="ca.weirdestway.weirdforce.ClientProxy", serverSide="ca.weirdestway.weirdforce.ServerProxy")
@@ -33,7 +33,7 @@ public class Main {
     //Update config only when my config changes
     @SubscribeEvent
     public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-    	if(event.modID.equals(Main.MODID)) {
+    	if(event.modID.equals(WeirdForce.MODID)) {
     		ConfigHandler.sync();
     	}
     }
