@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -146,7 +147,7 @@ public class ModBlockProjector extends Block {
 				//Check towards north first
 				if(world.getBlock(x, y, (z - n)) == ModBlocks.projector) {
 					if(isDirectionVaild(world, x, y, z, ForgeDirection.NORTH)) {
-						if(!world.isBlockIndirectlyGettingPowered(x, y, (z - n)) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
+						if(!world.isBlockIndirectlyGettingPowered(x, y, (z - n)) || !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
 							//So i have another projector, and they are both turned off
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x, y, z - k) == ModBlocks.projector) {break;}
@@ -155,7 +156,7 @@ public class ModBlockProjector extends Block {
 								}
 							}
 
-						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y, (z - n))) { //If i'm powered or they are
+						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) && world.isBlockIndirectlyGettingPowered(x, y, (z - n))) { //If i'm powered or they are
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x, y, z - k) == ModBlocks.projector) {break;}
 								setBlockPatch(x, y, (z - k), ModBlocks.fieldBlock, world);
@@ -170,7 +171,7 @@ public class ModBlockProjector extends Block {
 				//Check South
 				if(world.getBlock(x, y, (z + n)) == ModBlocks.projector) {
 					if(isDirectionVaild(world, x, y, z, ForgeDirection.SOUTH)) {
-						if(!world.isBlockIndirectlyGettingPowered(x, y, (z + n)) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
+						if(!world.isBlockIndirectlyGettingPowered(x, y, (z + n)) || !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
 							//If projector is found then set all blocks before it as replaceWith
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x, y, z + k) == ModBlocks.projector) {break;}
@@ -179,10 +180,10 @@ public class ModBlockProjector extends Block {
 								}
 							}
 
-						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y, (z + n))) { //If i'm powered or they are
+						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) && world.isBlockIndirectlyGettingPowered(x, y, (z + n))) { //If i'm powered or they are
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x, y, z + k) == ModBlocks.projector) {break;}
-								
+
 								setBlockPatch(x, y, (z + k), ModBlocks.fieldBlock, world);
 							}
 						}
@@ -195,7 +196,7 @@ public class ModBlockProjector extends Block {
 				//Check west
 				if(world.getBlock((x - n), y, z) == ModBlocks.projector) {
 					if(isDirectionVaild(world, x, y, z, ForgeDirection.WEST)) {
-						if(!world.isBlockIndirectlyGettingPowered((x - n), y, z) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
+						if(!world.isBlockIndirectlyGettingPowered((x - n), y, z) || !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
 							//If projector is found then set all blocks before it as replaceWith
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x - k, y, z) == ModBlocks.projector) {break;}
@@ -204,7 +205,7 @@ public class ModBlockProjector extends Block {
 								}
 							}
 
-						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered((x - n), y, z)) { //If i'm powered or they are
+						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) && world.isBlockIndirectlyGettingPowered((x - n), y, z)) { //If i'm powered or they are
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x - k, y, z) == ModBlocks.projector) {break;}
 								setBlockPatch((x - k), y, z, ModBlocks.fieldBlock, world);
@@ -219,7 +220,7 @@ public class ModBlockProjector extends Block {
 				//Check East
 				if(world.getBlock((x + n), y, z) == ModBlocks.projector) {
 					if(isDirectionVaild(world, x, y, z, ForgeDirection.EAST)) {
-						if(!world.isBlockIndirectlyGettingPowered((x + n), y, z) && !world.isBlockIndirectlyGettingPowered(x, y, z)) { //both blocks are off
+						if(!world.isBlockIndirectlyGettingPowered((x + n), y, z) || !world.isBlockIndirectlyGettingPowered(x, y, z)) { //if one of the blocks are off
 							//If projector is found then set all blocks before it as replaceWith
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x + k, y, z) == ModBlocks.projector) {break;}
@@ -228,7 +229,7 @@ public class ModBlockProjector extends Block {
 								}
 							}
 
-						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered((x + n), y, z)) { //If i'm powered or they are
+						} else if(world.isBlockIndirectlyGettingPowered(x, y, z) && world.isBlockIndirectlyGettingPowered((x + n), y, z)) { //If i'm powered and they are
 							for(int k = 1; k < n; k++) {
 								if(world.getBlock(x + k, y, z) == ModBlocks.projector) {break;}
 								setBlockPatch((x + k), y, z, ModBlocks.fieldBlock, world);
@@ -238,6 +239,52 @@ public class ModBlockProjector extends Block {
 				}
 
 			}//For() Container 
+		}
+	}
+
+	//This block doesn't care how its destroyed (yet...)
+	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion boom) { onBlockDestroyedByPlayer(world, x, y, z, 0); }
+
+	//Deletes all field blocks it is connected to
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta) {
+		if(!world.isRemote) {
+			System.out.println("Block is destroyed");
+
+			//Check towards north first
+			if(world.getBlock(x, y, (z - 1)) == ModBlocks.fieldBlock) {
+				for(int n = 1; n < ConfigHandler.maxConnect + 1; n++) {
+
+					//If its not a field block then I have gone to far so stop
+					if(world.getBlock(x, y, (z - 1)) != ModBlocks.fieldBlock) { break; }
+				}
+				
+			}
+
+
+			if(world.getBlock(x, y, (z + 1)) == ModBlocks.fieldBlock) {
+				for(int n = 1; n < ConfigHandler.maxConnect + 1; n++) {
+
+					//If its not a field block then I have gone to far so stop
+					if(world.getBlock(x, y, (z + 1)) != ModBlocks.fieldBlock) { break; }
+				}
+			}
+
+
+			if(world.getBlock((x - 1), y, z) == ModBlocks.fieldBlock) {
+				for(int n = 1; n < ConfigHandler.maxConnect + 1; n++) {
+
+					//If its not a field block then I have gone to far so stop
+					if(world.getBlock((x + 1), y, z) != ModBlocks.fieldBlock) { break; }
+				}
+			}
+
+			if(world.getBlock((x + 1), y, z) == ModBlocks.fieldBlock) {
+				for(int n = 1; n < ConfigHandler.maxConnect + 1; n++) {
+
+					//If its not a field block then I have gone to far so stop
+					if(world.getBlock((x - 1), y, z) != ModBlocks.fieldBlock) { break; }
+				}
+			}
 		}
 	}
 
@@ -287,7 +334,9 @@ public class ModBlockProjector extends Block {
 	public boolean isDirectionVaild(World world, int x, int y, int z, ForgeDirection direction) {
 		switch(direction) {
 		case NORTH:
-			for(int h = 1; h < 10; h++) {
+			for(int h = 1; h < ConfigHandler.maxConnect; h++) {
+
+				//If its a projector then there is no obstruction or I would have found it by now
 				if(world.getBlock(x, y, z - h) == ModBlocks.projector) {break;}
 				if(!isValidBlock(world, x, y, z - h)) {
 					//exit and return false because invalid block has been found
@@ -298,7 +347,7 @@ public class ModBlockProjector extends Block {
 			//No bad block was found so return true
 			return true;
 		case SOUTH:
-			for(int h = 1; h < 10; h++) {
+			for(int h = 1; h < ConfigHandler.maxConnect; h++) {
 				if(world.getBlock(x, y, z + h) == ModBlocks.projector) {break;}
 				if(!isValidBlock(world, x, y, z + h)) {
 					//exit and return false because invalid block has been found
@@ -309,7 +358,7 @@ public class ModBlockProjector extends Block {
 			//No bad block was found so return true
 			return true;
 		case WEST:
-			for(int h = 1; h < 10; h++) {
+			for(int h = 1; h < ConfigHandler.maxConnect; h++) {
 				if(world.getBlock(x - h, y, z) == ModBlocks.projector) {break;}
 				if(!isValidBlock(world, x - h, y, z)) {
 					//exit and return false because invalid block has been found
@@ -320,7 +369,7 @@ public class ModBlockProjector extends Block {
 			//No bad block was found so return true
 			return true;
 		case EAST:
-			for(int h = 1; h < 10; h++) {
+			for(int h = 1; h < ConfigHandler.maxConnect; h++) {
 				if(world.getBlock(x + h, y, z) == ModBlocks.projector) {break;}
 				if(!isValidBlock(world, x + h, y, z)) {
 					//exit and return false because invalid block has been found
