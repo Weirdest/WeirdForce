@@ -37,7 +37,7 @@ public class ModBlockField extends BlockPane {
 
 	@Override
 	public boolean canPaneConnectTo(IBlockAccess world, int x, int y, int z, ForgeDirection dir) {
-		return world.getBlock(x, y, z) == ModBlocks.projector || world.getBlock(x, y, z) == ModBlocks.fieldBlock ? true : false;
+		return world.getBlock(x, y, z) == WeirdBlocks.projector || world.getBlock(x, y, z) == WeirdBlocks.fieldBlock ? true : false;
 	}
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity killYou) {

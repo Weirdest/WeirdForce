@@ -2,7 +2,7 @@ package ca.weirdestway.weirdforce.world;
 
 import java.util.Random;
 
-import ca.weirdestway.weirdforce.block.ModBlocks;
+import ca.weirdestway.weirdforce.block.WeirdBlocks;
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -22,8 +22,8 @@ public class ModWorldGen implements IWorldGenerator {
 	private WorldGenerator gen_volcanized_forcium; //Only in nether
 	
 	public ModWorldGen() {
-	    this.gen_forcium_ore = new WorldGenMinable(ModBlocks.forciumOre, 6); //Max vein size of 6
-	    this.gen_volcanized_forcium = new WorldGenMinable(ModBlocks.volcanizedForcium, 4, Blocks.netherrack);//Extra arg for nether world gen
+	    this.gen_forcium_ore = new WorldGenMinable(WeirdBlocks.forciumOre, 6); //Max vein size of 6
+	    this.gen_volcanized_forcium = new WorldGenMinable(WeirdBlocks.volcanizedForcium, 4, Blocks.netherrack);//Extra arg for nether world gen
 	}
 	
     @Override

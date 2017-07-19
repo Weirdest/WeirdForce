@@ -1,6 +1,6 @@
 package ca.weirdestway.weirdforce;
 
-import ca.weirdestway.weirdforce.block.ModBlocks;
+import ca.weirdestway.weirdforce.block.WeirdBlocks;
 import ca.weirdestway.weirdforce.item.ModItems;
 import ca.weirdestway.weirdforce.lib.ModRecipes;
 import ca.weirdestway.weirdforce.world.ModWorldGen;
@@ -16,7 +16,7 @@ public class CommonProxy {
 		
 		//Both the client & server need to have the item(s) & block(s)
 		ModItems.init();
-		ModBlocks.init();
+		WeirdBlocks.init();
 	}
 	//Crafting and data
 	public void init(FMLInitializationEvent e) {

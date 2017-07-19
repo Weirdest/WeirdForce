@@ -6,7 +6,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
-public final class ModBlocks {
+public final class WeirdBlocks {
 	
 //	public static Block energyChannel;
 	public static Block forciumOre;

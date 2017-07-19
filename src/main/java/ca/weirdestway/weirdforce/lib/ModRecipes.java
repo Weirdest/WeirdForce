@@ -38,17 +38,17 @@ public class ModRecipes {
 //			'F', ModItems.forciumIngot,
 //			'P', ModItems.powerReceiver);
 	
-	GameRegistry.addRecipe(new ItemStack(ModBlocks.forcium),
+	GameRegistry.addRecipe(new ItemStack(WeirdBlocks.forcium),
 			"###", "###", "###",
 			'#', ModItems.forciumIngot);
 	
-	GameRegistry.addRecipe(new ItemStack(ModBlocks.projector),
+	GameRegistry.addRecipe(new ItemStack(WeirdBlocks.projector),
 			"SPS", "SLS", "SPS",
 			'S', Blocks.stone,
 			'P', ModItems.powerReceiver,
 			'L', ModItems.focalLens);
 	
 	//Smelting Recipes
-	GameRegistry.addSmelting(ModBlocks.forciumOre, new ItemStack(ModItems.forciumIngot), 0.7F);
+	GameRegistry.addSmelting(WeirdBlocks.forciumOre, new ItemStack(ModItems.forciumIngot), 0.7F);
 	}
 }
