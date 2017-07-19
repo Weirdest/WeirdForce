@@ -9,7 +9,7 @@ import net.minecraftforge.common.config.Configuration;
 public class ConfigGui extends GuiConfig {
 
 	public ConfigGui(GuiScreen screen) {
-		super(screen, new ConfigElement(WeirdForce.config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), 
+		super(screen, new ConfigElement<Object>(WeirdForce.config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), 
 				WeirdForce.MODID, true, false, GuiConfig.getAbridgedConfigPath(WeirdForce.config.toString()));
 	}
 

@@ -7,13 +7,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 
-public class ModBlockItemDrop extends Block {
+public class WeirdItemDrop extends Block {
 	
 	private Item drop;
 	private int least_quantity;
 	private int most_quantity;
 
-    protected ModBlockItemDrop(String unlocalizedName, Material mat, String HarvestTool, int HarvestLevel, Item drop, int least_quantity, int most_quantity) {
+    protected WeirdItemDrop(String unlocalizedName, Material mat, String HarvestTool, int HarvestLevel, Item drop, int least_quantity, int most_quantity) {
         super(mat);
         this.setBlockName(unlocalizedName);
         this.setBlockTextureName(WeirdForce.MODID + ":" + unlocalizedName);
@@ -24,7 +24,7 @@ public class ModBlockItemDrop extends Block {
         this.most_quantity = most_quantity;
     }
     
-    protected ModBlockItemDrop(String unlocalizedName, Material mat, String HarvestTool, int HarvestLevel, Item drop) {
+    protected WeirdItemDrop(String unlocalizedName, Material mat, String HarvestTool, int HarvestLevel, Item drop) {
         super(mat);
         this.setBlockName(unlocalizedName);
         this.setBlockTextureName(WeirdForce.MODID + ":" + unlocalizedName);

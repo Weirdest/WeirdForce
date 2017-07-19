@@ -15,13 +15,13 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.util.ForgeDirection;
 
 
-public class ModBlockProjector extends Block {
+public class WeirdProjector extends Block {
 
 	public IIcon[] icons = new IIcon[6];
 	public int[] coords = new int[3];
 	public String lastObstructionCoords = "init";
 
-	protected ModBlockProjector(Material material) {
+	protected WeirdProjector(Material material) {
 		super(material);
 		this.setBlockName("projector");
 		this.setCreativeTab(WeirdForceTabs.tabWeirdForce);
@@ -130,14 +130,14 @@ public class ModBlockProjector extends Block {
 		}
 		return false;
 	}
-	
+
 	//This is the one called by the game
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block neighborBlock) {
-		
+
 		//Call my own
 		onNeighborBlockChange(world, x, y, z, false);
 	}
-	
+
 	public void onNeighborBlockChange(World world, int x, int y, int z, boolean override) {
 		if(!world.isRemote) {
 
@@ -161,14 +161,14 @@ public class ModBlockProjector extends Block {
 								//I know I am powered and so is this guy, so connect
 								connectField(world, x, y, z, n, ForgeDirection.NORTH);
 							}
-							
+
 							//I found a projector so stop looking in this direction
 							break;
 						}
 					}
 
 				}
-				
+
 				//check east next
 				if(world.getBlock((x + 1),  y, z) != WeirdBlocks.fieldBlock) {
 
@@ -185,14 +185,14 @@ public class ModBlockProjector extends Block {
 								//I know I am powered and so is this guy, so connect
 								connectField(world, x, y, z, n, ForgeDirection.EAST);
 							}
-							
+
 							//I found a projector so stop looking in this direction
 							break;
 						}
 					}
 
 				}
-				
+
 				//check south next
 				if(world.getBlock(x,  y, (z + 1)) != WeirdBlocks.fieldBlock) {
 
@@ -209,14 +209,14 @@ public class ModBlockProjector extends Block {
 								//I know I am powered and so is this guy, so connect
 								connectField(world, x, y, z, n, ForgeDirection.SOUTH);
 							}
-							
+
 							//I found a projector so stop looking in this direction
 							break;
 						}
 					}
 
 				}
-				
+
 				//check west last
 				if(world.getBlock((x - 1),  y, z) != WeirdBlocks.fieldBlock) {
 
@@ -233,80 +233,83 @@ public class ModBlockProjector extends Block {
 								//I know I am powered and so is this guy, so connect
 								connectField(world, x, y, z, n, ForgeDirection.WEST);
 							}
-							
+
 							//I found a projector so stop looking in this direction
 							break;
 						}
 					}
 
 				}
-				
+
 			} else {
 				//I am not powered so check for fields
-				
+
 				//Check North first
 				if(world.getBlock(x, y, (z - 1)) == WeirdBlocks.fieldBlock) {
-					
+
 					//So I am not powered and there is a field block!!!!!
 					//I will now disconnect in this direction
-					
+
 					disconnectField(world, x, y, z, ForgeDirection.NORTH);
 				} 
-				
+
 				//Check east next
 				if (world.getBlock((x + 1), y, z) == WeirdBlocks.fieldBlock) {
 					disconnectField(world, x, y, z, ForgeDirection.EAST);
 				}
-				
+
 				//Check south next
 				if(world.getBlock(x, y, (z + 1)) == WeirdBlocks.fieldBlock) {
 					disconnectField(world, x, y, z, ForgeDirection.SOUTH);
 				}
-				
+
 				//Check west last
 				if (world.getBlock((x - 1), y, z) == WeirdBlocks.fieldBlock) {
 					disconnectField(world, x, y, z, ForgeDirection.WEST);
 				}
-				
+
 			}
 		}
 	}
 
 	public void connectField(World world, int x, int y, int z, int blocksAway, ForgeDirection direction) {
 		//Lets connect!
-		
+
 		//Check if there is any obstructions in the given direction
 		if(directionIsValid(world, x, y, z, blocksAway, direction)) {
-			
+
 			//No obstructions were found so start changing blocks
 			switch(direction) {
 			case NORTH:
-				
+
 				for(int i = 1; i < blocksAway; i++) {
 					setBlockPatch(x, y, (z - i), WeirdBlocks.fieldBlock, world);
 				}
-				
+
 				break;
 			case EAST:
-				
+
 				for(int i = 1; i < blocksAway; i++) {
 					setBlockPatch((x + i), y, z, WeirdBlocks.fieldBlock, world);
 				}
-				
+
 				break;
 			case SOUTH:
-				
+
 				for(int i = 1; i < blocksAway; i++) {
 					setBlockPatch(x, y, (z + i), WeirdBlocks.fieldBlock, world);
 				}
-				
+
 				break;
 			case WEST:
-				
+
 				for(int i = 1; i < blocksAway; i++) {
 					setBlockPatch((x - i), y, z, WeirdBlocks.fieldBlock, world);
 				}
-				
+
+				break;
+			default:
+				//Literally only to make eclipse feel better about its life
 				break;
 			}
 		}
@@ -318,7 +321,7 @@ public class ModBlockProjector extends Block {
 			for(int n = 1; n < ConfigHandler.maxConnect; n++) {
 				//First check for a projector block, if so stop setting to air because all field blocks are gone
 				if(world.getBlock(x, y, (z - n)) == WeirdBlocks.projector) { break; }
-				
+
 				//Its not a projector so it must be a field block!
 				setBlockPatch(x, y, (z - n), Blocks.air, world);
 			}
@@ -327,7 +330,7 @@ public class ModBlockProjector extends Block {
 			for(int n = 1; n < ConfigHandler.maxConnect; n++) {
 				//First check for a projector block, if so stop setting to air because all field blocks are gone
 				if(world.getBlock((x + n), y, z) == WeirdBlocks.projector) { break; }
-				
+
 				//Its not a projector so it must be a field block!
 				setBlockPatch((x + n), y, z, Blocks.air, world);
 			}
@@ -336,7 +339,7 @@ public class ModBlockProjector extends Block {
 			for(int n = 1; n < ConfigHandler.maxConnect; n++) {
 				//First check for a projector block, if so stop setting to air because all field blocks are gone
 				if(world.getBlock(x, y, (z + n)) == WeirdBlocks.projector) { break; }
-				
+
 				//Its not a projector so it must be a field block!
 				setBlockPatch(x, y, (z + n), Blocks.air, world);
 			}
@@ -345,10 +348,14 @@ public class ModBlockProjector extends Block {
 			for(int n = 1; n < ConfigHandler.maxConnect; n++) {
 				//First check for a projector block, if so stop setting to air because all field blocks are gone
 				if(world.getBlock((x - n), y, z) == WeirdBlocks.projector) { break; }
-				
+
 				//Its not a projector so it must be a field block!
 				setBlockPatch((x - n), y, z, Blocks.air, world);
 			}
+			break;
+			
+		default:
+			//Literally only to make eclipse feel better about its life
 			break;
 		}
 	}
@@ -362,9 +369,9 @@ public class ModBlockProjector extends Block {
 	}
 
 	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitx, float hity, float hitz, int meta) {
-		
+
 		onNeighborBlockChange(world, x, y, z, false);
-		
+
 		return 0;
 	}
 

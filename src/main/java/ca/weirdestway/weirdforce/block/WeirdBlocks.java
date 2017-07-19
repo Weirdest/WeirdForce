@@ -1,6 +1,6 @@
 package ca.weirdestway.weirdforce.block;
 
-import ca.weirdestway.weirdforce.item.ModItems;
+import ca.weirdestway.weirdforce.item.WeirdItems;
 import ca.weirdestway.weirdforce.lib.WeirdForceTabs;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -26,30 +26,30 @@ public final class WeirdBlocks {
 //		
 //		GameRegistry.registerBlock(energyChannel, "energyChannel");
 		
-		forciumOre = new BasicBlock("forciumOre", Material.rock, "pickaxe", 2)
+		forciumOre = new BasicWeirdBlock("forciumOre", Material.rock, "pickaxe", 2)
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
 				.setResistance(5F)
 				.setHardness(10F);
 		GameRegistry.registerBlock(forciumOre, "forciumOre");
 		
-		forcium = new BasicBlock("forcium", Material.iron, "pickaxe", 2)
+		forcium = new BasicWeirdBlock("forcium", Material.iron, "pickaxe", 2)
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce)
 				.setResistance(100F)
 				.setHardness(20F);
 		GameRegistry.registerBlock(forcium, "forcium");
 		
-		volcanizedForcium = new ModBlockItemDrop("volcanizedForcium", Material.glass, "pickaxe", 3, ModItems.forciumShard, 1, 1)//Will always get one
+		volcanizedForcium = new WeirdItemDrop("volcanizedForcium", Material.glass, "pickaxe", 3, WeirdItems.forciumShard, 1, 1)//Will always get one
 				.setHardness(15F)
 				.setResistance(500F)
 				.setCreativeTab(WeirdForceTabs.tabWeirdForce);
 		GameRegistry.registerBlock(volcanizedForcium, "volcanizedForcium");
 		
 		//All values are set in the constructor
-		projector = new ModBlockProjector(Material.iron);
+		projector = new WeirdProjector(Material.iron);
 		GameRegistry.registerBlock(projector, "projector");
 		
 		//Again, all in the constructor
-		fieldBlock = new ModBlockField();
+		fieldBlock = new WeirdField();
 		GameRegistry.registerBlock(fieldBlock, "fieldBlock");
 		
 	}

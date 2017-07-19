@@ -2,10 +2,11 @@ package ca.weirdestway.weirdforce.lib;
 
 import ca.weirdestway.weirdforce.WeirdForce;
 import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraftforge.common.config.Configuration;
 
 public class ConfigHandler {
 	
-	private static final String _PREFIX = WeirdForce.config.CATEGORY_GENERAL + WeirdForce.config.CATEGORY_SPLITTER;
+	private static final String _PREFIX = Configuration.CATEGORY_GENERAL + Configuration.CATEGORY_SPLITTER;
 	
 	//Options
 	public static boolean overwriteBlock;

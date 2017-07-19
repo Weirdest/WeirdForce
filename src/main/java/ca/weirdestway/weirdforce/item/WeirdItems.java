@@ -5,7 +5,7 @@ import ca.weirdestway.weirdforce.lib.WeirdForceTabs;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 
-public final class ModItems {
+public final class WeirdItems {
 
 	public static Item powerReceiver;
 	public static Item forciumIngot;

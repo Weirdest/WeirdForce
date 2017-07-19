@@ -14,7 +14,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class ModBlockField extends BlockPane {
+public class WeirdField extends BlockPane {
 	public String topTexture = WeirdForce.MODID + ":forceField";
 	public String sideTexture = WeirdForce.MODID + ":forceField_top";
 	//public IIcon sideTextureIcon;
@@ -26,9 +26,8 @@ public class ModBlockField extends BlockPane {
 	public double blue = 1.0D;
 
 
-	public ModBlockField() {
+	public WeirdField() {
 		super(WeirdForce.MODID + ":forceField", WeirdForce.MODID + ":forceField_top", Material.rock, false);
-		//this.setCreativeTab(WeirdForceTabs.tabWeirdForce); // Only for debugging (Debugging over)
 		this.setBlockUnbreakable();
 		this.setLightLevel(0.5F);
 		this.setHardness(1000000F);//Ya nope
