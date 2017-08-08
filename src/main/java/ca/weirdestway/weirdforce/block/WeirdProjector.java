@@ -156,7 +156,7 @@ public class WeirdProjector extends Block {
 						if(world.getBlock(x, y, (z - n)) == WeirdBlocks.projector) {
 
 							//Found a projector now is it powered?
-							if(world.isBlockIndirectlyGettingPowered(x, y, (z - n))) {
+							if(world.isBlockIndirectlyGettingPowered(x, y, (z - n)) || !ConfigHandler.mutualPower) {
 
 								//I know I am powered and so is this guy, so connect
 								connectField(world, x, y, z, n, ForgeDirection.NORTH);
@@ -180,7 +180,7 @@ public class WeirdProjector extends Block {
 						if(world.getBlock((x + n),  y, z) == WeirdBlocks.projector) {
 
 							//Found a projector now is it powered?
-							if(world.isBlockIndirectlyGettingPowered((x + n),  y, z)) {
+							if(world.isBlockIndirectlyGettingPowered((x + n),  y, z) || !ConfigHandler.mutualPower) {
 
 								//I know I am powered and so is this guy, so connect
 								connectField(world, x, y, z, n, ForgeDirection.EAST);
@@ -204,7 +204,7 @@ public class WeirdProjector extends Block {
 						if(world.getBlock(x, y, (z + n)) == WeirdBlocks.projector) {
 
 							//Found a projector now is it powered?
-							if(world.isBlockIndirectlyGettingPowered(x, y, (z + n))) {
+							if(world.isBlockIndirectlyGettingPowered(x, y, (z + n)) || !ConfigHandler.mutualPower) {
 
 								//I know I am powered and so is this guy, so connect
 								connectField(world, x, y, z, n, ForgeDirection.SOUTH);
@@ -228,7 +228,7 @@ public class WeirdProjector extends Block {
 						if(world.getBlock((x - n),  y, z) == WeirdBlocks.projector) {
 
 							//Found a projector now is it powered?
-							if(world.isBlockIndirectlyGettingPowered((x - n),  y, z)) {
+							if(world.isBlockIndirectlyGettingPowered((x - n),  y, z) || !ConfigHandler.mutualPower) {
 
 								//I know I am powered and so is this guy, so connect
 								connectField(world, x, y, z, n, ForgeDirection.WEST);

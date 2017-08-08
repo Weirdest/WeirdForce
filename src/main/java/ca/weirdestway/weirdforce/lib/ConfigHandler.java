@@ -25,7 +25,11 @@ public class ConfigHandler {
 	public static final int maxConnect_default = 10;
 	public static final int maxConnectMin = 1;
 	public static final int maxConnectMax = 100;
-	public static final String maxConnect_desc = "Max range the projector ca connect";
+	public static final String maxConnect_desc = "Max range the projector can connect";
+	
+	public static boolean mutualPower;
+	public static final boolean mutualPower_default = true;
+	public static final String mutualPower_desc = "If both posts need to be powered (true) or just one (false)";
 	
 	public static void sync() {
 		FMLCommonHandler.instance().bus().register(WeirdForce.instance);
@@ -39,6 +43,7 @@ public class ConfigHandler {
 		msgObstruction = WeirdForce.config.getBoolean("Message Obstruction", behavior, msgObstruction_default, msgObstruction_desc);
 		fieldInstaKill = WeirdForce.config.getBoolean("InstaKill", behavior, fieldInstaKill_default, fieldInstaKill_desc);
 		maxConnect = WeirdForce.config.getInt("Max Range", behavior, maxConnect_default, maxConnectMin, maxConnectMax, maxConnect_desc);
+		mutualPower = WeirdForce.config.getBoolean("Mutual Power", behavior, mutualPower_default, mutualPower_desc);
 		
 		
 		if(WeirdForce.config.hasChanged()) {
